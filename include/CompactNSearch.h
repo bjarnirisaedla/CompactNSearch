@@ -191,6 +191,15 @@ public:
 		return m_activation_table.is_active(i, j);
 	}
 
+	/** Remove a point set from the neighborhood search
+	*/
+	void removePointSet(unsigned int i)
+	{
+		m_point_sets.erase(m_point_sets.begin() + i);
+		m_activation_table.remove_point_set(i);
+		m_old_activation_table.remove_point_set(i);
+	}
+
 private:
 
 	void init();

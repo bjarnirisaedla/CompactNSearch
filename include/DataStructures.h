@@ -154,6 +154,16 @@ public:
 			m_table[size][i] = static_cast<unsigned char>(search_neighbors);
 	}
 
+	void remove_point_set(unsigned int k)
+	{
+		// Remove column from each row
+		auto size = m_table.size();
+		for (auto i = 0u; i < size; i++)
+			m_table[i].erase(m_table[i].begin() + k);
+		// Remove the appropriate row
+		m_table.erase(m_table.begin() + k);
+	}
+
 	/** Activate/Deactivate that neighbors in point set index2 are found when searching for neighbors of point set index1.
 	 */
 	void set_active(unsigned int index1, unsigned int index2, bool active)
