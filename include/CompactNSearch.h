@@ -200,6 +200,11 @@ public:
 		m_old_activation_table.remove_point_set(i);
 	}
 
+	void setInitialized(bool val)
+    {
+	    m_initialized = val;
+    }
+
 private:
 
 	void init();
