@@ -196,8 +196,14 @@ public:
 	void removePointSet(unsigned int i)
 	{
 		m_point_sets.erase(m_point_sets.begin() + i);
+		for (auto &a: m_point_sets)
+        {
+		    a.m_neighbors.erase(a.m_neighbors.begin() + i);
+		    a.m_locks.erase(a.m_locks.begin() + i);
+        }
 		m_activation_table.remove_point_set(i);
 		m_old_activation_table.remove_point_set(i);
+		m_initialized = false;
 	}
 
 	void setInitialized(bool val)
